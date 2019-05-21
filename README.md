@@ -1,6 +1,6 @@
 <img src="https://s3.us-west-2.amazonaws.com/sciouploads/deejai.png" width="100" height="auto">
 
-# deejai Front
+# deejai App
 A music recommendation service based on artificial intelligence.
 
 
