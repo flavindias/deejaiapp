@@ -1,3 +1,9 @@
+<img src="https://s3.us-west-2.amazonaws.com/sciouploads/deejai.png" width="100" height="auto">
+
+# deejai App
+A music recommendation service based on artificial intelligence.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
