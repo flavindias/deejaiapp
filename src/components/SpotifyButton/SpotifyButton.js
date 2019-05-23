@@ -2,6 +2,8 @@ import SpotifyLogin from "react-spotify-login";
 import React from "react";
 
 const onSuccess = response => {
+    console.log(response)
+
     window.sessionStorage.setItem("token", response.access_token);
 };
 const onFailure = response => console.error(response);
