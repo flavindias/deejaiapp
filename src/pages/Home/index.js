@@ -1,8 +1,7 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
-import SpotifyButton from '../../components/SpotifyButton/SpotifyButton';
-import SpotifyLogin from 'react-spotify-login';
-import CSS from './Home.css';
+import Header from '../../components/Header';
+import SpotifyButton from '../../components/SpotifyButton';
+import './style.css';
 
 
 
@@ -10,7 +9,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <div>
-                <Header/>
+                <Header home={true}/>
                 <main role="main" className="inner cover" style={{
                     position: 'absolute', left: '50%', top: '50%',
                     transform: 'translate(-50%, -50%)'

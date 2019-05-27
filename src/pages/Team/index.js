@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../../components/Header/Header'
-import CardMember from '../../components/CardMember/CardMember'
+import Header from '../../components/Header'
+import CardMember from '../../components/CardMember/'
 
 export default class Team extends React.Component {
     render() {
         return(
             <div>
-                <Header/>
+                <Header team={true}/>
                 <main role={"main"} style={{'margin-bottom': '20px'}}>
                     <div className="container">
                         <div className="row">
@@ -34,7 +34,7 @@ export default class Team extends React.Component {
                                                 photo={"https://randomuser.me/api/portraits/men/82.jpg"}
                                                 linkedin={"http://linkedin.com/"}
                                                 github={"http://github.com/"}
-                                                email={"fdf2@cin.ufpe.br"}/>
+                                                email={"hbcj@cin.ufpe.br"}/>
                                     <CardMember name={"Igor Dias da Silva"}
                                                 role={"Machine Learning"}
                                                 photo={"https://randomuser.me/api/portraits/men/21.jpg"}
@@ -79,9 +79,9 @@ export default class Team extends React.Component {
                                                 email={"vjs3@cin.ufpe.br"}/>
                                     <CardMember name={"Victor Di Cavalcanti Niceas"}
                                                 role={"Back-End"}
-                                                photo={"https://randomuser.me/api/portraits/men/30.jpg"}
+                                                photo={"https://avatars1.githubusercontent.com/u/26773147?s=460&v=4"}
                                                 linkedin={"http://linkedin.com/"}
-                                                github={"http://github.com/"}
+                                                github={"https://github.com/vdcn1"}
                                                 email={"vdcn@cin.ufpe.br"}/>
                                 </div>
                             </div>

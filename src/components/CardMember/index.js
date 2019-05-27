@@ -3,7 +3,7 @@ const divStyle = {
     position: 'absolute',
     bottom: '0px'
 }
-export default class Team extends React.Component {
+export default class CardMember extends React.Component {
     render() {
         return(
             <div className="card">

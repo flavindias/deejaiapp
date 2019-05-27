@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../../components/Header/Header'
-export default class AboutUs extends React.Component {
+import Header from '../../components/Header'
+export default class About extends React.Component {
     render() {
         return(
             <div>
-                <Header/>
+                <Header about={true}/>
                 <main role={"main"}>
                     <div className="container">
                         <div className="row">
