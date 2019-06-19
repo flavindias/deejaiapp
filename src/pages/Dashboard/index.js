@@ -11,10 +11,6 @@ export default class Dashboard extends React.Component{
     }
     getTopMusic = async () => {
         try {
-            const token = await AsyncStorage.getItem("@Deejai:token");
-            const header = {
-                'Authorization': `Bearer ${token}`
-            }
             const response = api.get('/')
         }
         catch (e){
