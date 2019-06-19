@@ -1,14 +1,20 @@
 import React from 'react';
 import Header from '../../components/Header';
 import SpotifyButton from '../../components/SpotifyButton';
+import Footer from  '../../components/Footer'
+import api from '../../services/api'
 import './style.css';
 
 
 
 export default class Home extends React.Component {
+    componentDidMount() {
+
+    }
+
     render() {
         return (
-            <div>
+            <div className={"home"}>
                 <Header home={true}/>
                 <main role="main" className="inner cover" style={{
                     position: 'absolute', left: '50%', top: '50%',
@@ -29,6 +35,7 @@ export default class Home extends React.Component {
 
 
                 </main>
+                {/*<Footer></Footer>*/}
 
 
 

@@ -5,6 +5,13 @@ import SpotifyButton from '../../components/SpotifyButton';
 
 
 export default class Login extends React.Component {
+    componentDidMount() {
+
+    }
+
+    loadData = (url) => {
+
+    }
     render() {
         return (
             <div>
@@ -14,17 +21,12 @@ export default class Login extends React.Component {
                     transform: 'translate(-50%, -50%)'
                 }}>
                     <div>
-                        <iframe src={"http://localhost:3000/v1/auth/spotify"} height={this.props.height} width={this.props.width}/>
+                        <div className="row">
+                            <h1>{"Please sign in. "}</h1>
+                            <SpotifyButton title={"Let's Go!"}/>
+                        </div>
                     </div>
-
-
                 </main>
-
-
-
-
-
-
             </div>
         )
     }

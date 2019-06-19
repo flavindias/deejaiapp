@@ -21,7 +21,7 @@ const Routes = () => (
             <PrivateRoute exact path={"/app"} component={Dashboard}/>
             <Route exact path={"/login"} component={Login}/>
             <PrivateRoute exact path={"/logout"} component={() => {
-                window.sessionStorage.clear("token");
+                window.sessionStorage.clear("@DeejAI:token");
             }}/>
         </Switch>
     </BrowserRouter>
