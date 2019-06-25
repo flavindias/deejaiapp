@@ -2,14 +2,14 @@ import {create} from 'apisauce';
 
 
 const api = create({
-    baseURL: 'http://localhost:3000/v1',
+    baseURL: 'https://apideejai.flavianodias.com.br/v1',
 });
 
 api.addAsyncRequestTransform( request => async () => {
     const token = window.sessionStorage.getItem("@DeejAI:token");
 
     if (token)
-        request.headers['Authorization'] = token
+        request.headers['Authorization'] = `Bearer ${token}`
 })
 
 api.addResponseTransform(response => {

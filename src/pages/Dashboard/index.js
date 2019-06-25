@@ -5,17 +5,44 @@ import api from '../../services/api';
 
 
 export default class Dashboard extends React.Component{
+    constructor(props){
+        super(props)
+        this.state = {
+            rooms: []
+        }
+    }
 
     componentDidMount() {
         this.getTopMusic()
+        this.getRooms()
     }
     getTopMusic = async () => {
         try {
-            const response = api.get('/')
+            const response = await api.get('/users/topMusic')
+            if (response){
+                // console.log(response.data)
+            }
         }
         catch (e){
+            console.log(e)
+        }
+    }
+    getRooms = async () => {
+        try {
+            const response = await api.get('/rooms')
+            if (response){
+                console.log(response)
+                // this.setState({
+                //     rooms: response
+                // })
+                console.log(this.state.rooms)
+            }
 
         }
+        catch (e) {
+            console.log(e)
+        }
+
     }
 
 
