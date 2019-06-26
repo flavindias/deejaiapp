@@ -2,7 +2,7 @@ import {create} from 'apisauce';
 
 
 const api = create({
-    baseURL: 'https://apideejai.flavianodias.com.br/v1',
+    baseURL: 'https://api.deejai.me/v1',
 });
 
 api.addAsyncRequestTransform( request => async () => {

@@ -36,7 +36,7 @@ export default class Header extends React.Component {
     render() {
         return (
             <SpotifyLogin clientId={"8e50fa5257fe4537b86253accb36a7fc"}
-                          redirectUri={"http://localhost:8080/callback"}
+                          redirectUri={"https://deejai.me/callback"}
                           onSuccess={this.onSuccess}
                           onFailure={this.onFailure}
                           scope={["user-read-recently-played", "user-top-read", "user-library-modify", "user-library-read", "user-read-email", "user-read-birthdate", "user-read-private", "user-read-playback-state", "user-modify-playback-state", "user-read-currently-playing", "user-follow-read", "user-follow-modify", "playlist-read-private", "playlist-modify-public", "playlist-modify-private", "playlist-read-collaborative", "app-remote-control", "streaming"]}
