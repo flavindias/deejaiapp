@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-const path = require('path');
-const env = require('dotenv').config({path:`${path.resolve(__dirname, "..", ".env")}`});
+// const path = require('path');
+// const env = require('dotenv').config({ path: `${path.resolve(__dirname, "..", ".env")}` });
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

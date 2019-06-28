@@ -1,26 +1,27 @@
 import React from 'react';
 import Header from '../../components/Header'
+import SpotifyButton from "../../components/SpotifyButton";
 export default class About extends React.Component {
-    render() {
-        return(
-            <div>
-                <Header about={true}/>
-                <main role={"main"}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12">
-                                <h1>Our project</h1>
-                                <p style={{'background-color': 'white', 'padding': '20px', 'border-radius': '10px', 'color': 'rgb(52,58,64)'}}>Mussum Ipsum, cacilds vidis litro abertis. Viva Forevis aptent taciti sociosqu ad litora torquent. Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! Quem manda na minha terra sou euzis! Sapien in monti palavris qui num significa nadis i pareci latim.
-
-                                    Suco de cevadiss deixa as pessoas mais interessantis. Casamentiss faiz malandris se pirulitá. A ordem dos tratores não altera o pão duris. Manduma pindureta quium dia nois paga.
-
-                                    Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Aenean aliquam molestie leo, vitae iaculis nisl. Não sou faixa preta cumpadi, sou preto inteiris, inteiris. Delegadis gente finis, bibendum egestas augue arcu ut est.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </main>
+  render () {
+    return (
+      <div>
+        <Header about={true} />
+        <main role={"main"} className={"cover"}>
+          <div className="container">
+            <div className="row">
+              <div className="col-12">
+                <h1>Our project</h1>
+                <p style={{ 'background-color': 'white', 'padding': '20px', 'border-radius': '10px', 'color': 'rgb(52,58,64)' }}>"DeejAi" is an application developed by a <a
+                  href="/team">student group</a> of <a href="https://cin.ufpe.br" target={"_blank"}>Cin-UFPE</a> when they attended the discipline of <a href="https://cin.ufpe.br/~musica" target={"_blank"}>Computational Musicology</a> ministered by <a href="">Geber Ramalho</a> and <a href="">Giordano Ribeiro</a>. This application has as objective to resolve a common problem of many users, recommend music for a users group.<br />
+                  To use our app you just need to connect your Spotify account and create or join in a room, keep calm this room could be private for your friends if you prefer, so the algorithm based on members profile will recommend a playlist.<br />
+                  Hey, after we generate a playlist we’ll ask if you like our platform and our recommended songs. <br />
+                  And don’t forget if you like please share us.</p>
+              </div>
             </div>
-        )
-    }
+          </div>
+
+        </main>
+      </div>
+    )
+  }
 }

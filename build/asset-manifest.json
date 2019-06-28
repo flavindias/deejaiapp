@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.b7014bec.chunk.css",
-    "main.js": "/static/js/main.2c902b12.chunk.js",
-    "main.js.map": "/static/js/main.2c902b12.chunk.js.map",
-    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-    "static/js/2.b6ae4990.chunk.js": "/static/js/2.b6ae4990.chunk.js",
-    "static/js/2.b6ae4990.chunk.js.map": "/static/js/2.b6ae4990.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.55fef7f52ccd6dabf9059a11d6fd35ed.js": "/precache-manifest.55fef7f52ccd6dabf9059a11d6fd35ed.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.b7014bec.chunk.css.map": "/static/css/main.b7014bec.chunk.css.map"
+    "main.css": "https://deejai.me/static/css/main.368ec375.chunk.css",
+    "main.js": "https://deejai.me/static/js/main.e8dc3b9d.chunk.js",
+    "main.js.map": "https://deejai.me/static/js/main.e8dc3b9d.chunk.js.map",
+    "runtime~main.js": "https://deejai.me/static/js/runtime~main.aab15ade.js",
+    "runtime~main.js.map": "https://deejai.me/static/js/runtime~main.aab15ade.js.map",
+    "static/js/2.82bc153c.chunk.js": "https://deejai.me/static/js/2.82bc153c.chunk.js",
+    "static/js/2.82bc153c.chunk.js.map": "https://deejai.me/static/js/2.82bc153c.chunk.js.map",
+    "index.html": "https://deejai.me/index.html",
+    "precache-manifest.d48e1b1b4ba1fe83bc3ee7c493d20cbe.js": "https://deejai.me/precache-manifest.d48e1b1b4ba1fe83bc3ee7c493d20cbe.js",
+    "service-worker.js": "https://deejai.me/service-worker.js",
+    "static/css/main.368ec375.chunk.css.map": "https://deejai.me/static/css/main.368ec375.chunk.css.map"
   }
 }

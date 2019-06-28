@@ -5,29 +5,32 @@ import SpotifyButton from '../../components/SpotifyButton';
 
 
 export default class Login extends React.Component {
-    componentDidMount() {
+  componentDidMount () {
 
-    }
+  }
 
-    loadData = (url) => {
+  loadData = (url) => {
 
-    }
-    render() {
-        return (
-            <div>
-                <Header/>
-                <main role="main" className="inner cover" style={{
-                    position: 'absolute', left: '50%', top: '50%',
-                    transform: 'translate(-50%, -50%)'
-                }}>
-                    <div>
-                        <div className="row">
-                            <h1>{"Please sign in. "}</h1>
-                            <SpotifyButton title={"Let's Go!"}/>
-                        </div>
-                    </div>
-                </main>
+  }
+  render () {
+    return (
+      <div>
+        <Header />
+        <main role="main" className="cover">
+          <div className="container h-100 home">
+            <div className="row h-100 justify-content-center align-items-center text-center">
+              <div className="col-12">
+                <div className="form-group">
+                  <h1 className="cover-heading">Please, sign in. </h1>
+                </div>
+                <div className="form-group">
+                  <p className="lead"><SpotifyButton title={"Let's Go"} /></p>
+                </div>
+              </div>
             </div>
-        )
-    }
+          </div>
+        </main>
+      </div>
+    )
+  }
 }

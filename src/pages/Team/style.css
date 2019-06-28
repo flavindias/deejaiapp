@@ -1,0 +1,9 @@
+.team {
+  width: 100%;
+  background-color: rgb(57, 160, 215);
+  width: 100wh;
+  height: 100vh;
+  color: '#fff';
+  display: block;
+  min-height: 100%;
+}
