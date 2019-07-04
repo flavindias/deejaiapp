@@ -10,8 +10,8 @@ import Team from '../pages/Team';
 import Contact from '../pages/Contact';
 import Dashboard from '../pages/Dashboard';
 import Login from '../pages/Login'
-// import ThankU from '../pages/ThankU';
-import qs from 'querystring';
+import Invite from '../pages/Invite';
+import RoomView from '../pages/RoomView';
 
 const Routes = () => (
   <BrowserRouter>
@@ -21,9 +21,12 @@ const Routes = () => (
       <Route exact path={"/team"} component={Team} />
       <Route exact path={"/contact"} component={Contact} />
       <PrivateRoute exact path={"/app"} component={Dashboard} />
+      <PrivateRoute exact path={"/app/rooms/:id"} component={RoomView} />
       <Route exact path={"/login"} component={Login} />
+      <Route exact path={"/join/:code"} component={Invite} />
       <PrivateRoute exact path={"/logout"} component={() => {
         window.sessionStorage.clear("@DeejAI:token");
+
       }} />
     </Switch>
   </BrowserRouter>
