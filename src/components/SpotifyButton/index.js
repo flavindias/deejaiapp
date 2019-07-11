@@ -2,8 +2,14 @@ import SpotifyLogin from "react-spotify-login";
 import React from "react";
 import api from "../../services/api";
 
-export default class Header extends React.Component {
-
+export default class SpotifyButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = this.props.location;
+  }
+  componentDidMount () {
+    console.log(this.props.redirectUrl)
+  }
   onSuccess = response => {
     window.sessionStorage.setItem("@DeejAI:token", response.access_token);
     const expires = new Date().setMinutes(new Date().getMinutes() + response.expires_in / 60);
@@ -19,9 +25,9 @@ export default class Header extends React.Component {
       // alert(window.sessionStorage.getItem("@DeejAI:token"));
       const response = await api.get('/users/topMusic')
       if (response) {
-        console.log(response.data)
         //    go to rooms
-        this.props.history.push("/app");
+        console.log(response);
+        this.props.history.push(`${this.redirect !== '' ? this.redirect : "/app"}`);
       }
     }
     catch (e) {

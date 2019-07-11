@@ -1,7 +1,7 @@
 export default class AuthService {
   isAuthenticated = () => {
     return window.sessionStorage.getItem("@DeejAI:token_expires_in") != null ?
-      new Date().getTime() < new Date(window.sessionStorage.getItem("@DeejAI:token_expires_in")).getTime() :
+      new Date().getTime() < new Date(parseInt(window.sessionStorage.getItem("@DeejAI:token_expires_in"))).getTime() :
       false;
   };
   //TODO checar no localstorage se tem o token do usuário

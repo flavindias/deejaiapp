@@ -66,15 +66,16 @@ export default class RoomView extends React.Component {
 
   }
   viewPlaylist = (id) => {
-    this.props.history.push(`/app/playlist/${id}`)
+    this.props.history.push(`/app/playlists/${id}`, {
+
+      room: this.state.room
+
+    })
   }
 
   render () {
     const { room } = this.state;
     const defaultImg = `${process.env.PUBLIC_URL}/img/default-profile.png`;
-    // const position = this.room.location ? this.room.location.coordinates : [ -8, -36 ];
-    // const position = this.state.data.address ? (this.state.data.address.coordinates ? this.state.data.address.coordinates.coordinates : [this.info.lat, this.info.lng]) : [this.info.lat, this.info.lng];
-    // const position = [ -8, -36 ];
     return (
       <div>
         <Header />
@@ -134,17 +135,30 @@ export default class RoomView extends React.Component {
                   <div className="footer text-left">
                     <div className="row">
                       <div className="col-6">
-                        <button className={'btn btn-success'} onClick={() => { this.deejAIPlaylist() }}>Create new deejAI playlist</button>
-                        <br />
-                        <button className={'btn'} onClick={() => { this.userPlaylist() }}>Create a new playlist </button>
-                        <br />
-                        <span>Description: </span>
-                        <p>{room.description}</p>
-                        <span>Share</span>
-                        <p></p>
-                        <span>Status:</span>
-                        <br />
-                        <span className={`btn btn-sm ${room.public ? "btn-success" : "btn-danger"}`}> {room.public ? "Public" : "Private"}</span>
+                        <div className="row">
+                          <div className="col-12">
+                            <h4>Share</h4>
+                            <p><a href={`${process.env.PUBLIC_URL}/join/${room.code}`} className={!room.code !== 'undefined' && 'hidden'} target={"_blank"}>Click here</a></p>
+                          </div>
+                          <div className="col-12">
+                            <h4 className={"title"}>Status:</h4>
+                            <span className={`btn btn-sm ${room.public ? "btn-success" : "btn-danger"}`}> {room.public ? "Public" : "Private"}</span>
+                          </div>
+                          <div className="col-12">
+                            <h4>Description: </h4>
+                            <p>{room.description}</p>
+                          </div>
+                          <div className="col-6">
+                            <button className={'btn btn-success'} onClick={() => { this.deejAIPlaylist() }}>Create new deejAI playlist</button>
+
+                          </div>
+                          <div className="col-6">
+                            <button className={'btn'} onClick={() => { this.userPlaylist() }}>Create a new playlist </button>
+                          </div>
+                        </div>
+
+
+
 
                       </div>
                       <div className="col-6 text-center">
@@ -193,7 +207,7 @@ export default class RoomView extends React.Component {
                               ]
                             }
                           ]}
-                          defaultPageSize={10}
+                          defaultPageSize={5}
                           className="-striped -highlight"
                         />
 

@@ -40,7 +40,6 @@ export default class RoomInvite extends React.Component {
   }
 
   onSuccess = response => {
-    console.log(response);
     window.sessionStorage.setItem("@DeejAI:token", response.access_token);
     this.getTopMusic();
   };

@@ -19,7 +19,10 @@ body {
   transform-style: preserve-3d;
   margin: 10px 5px;
 }
-
+.widget-svg {
+  width: 30px;
+  height: 30px;
+}
 .header {
   border-bottom: 1px solid #ebeff2;
   padding: 19px 0;

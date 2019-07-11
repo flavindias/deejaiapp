@@ -5,8 +5,9 @@ import SpotifyButton from '../../components/SpotifyButton';
 
 
 export default class Login extends React.Component {
-  componentDidMount () {
-
+  constructor(props) {
+    super(props);
+    this.state = this.props.location;
   }
 
   loadData = (url) => {
@@ -24,7 +25,12 @@ export default class Login extends React.Component {
                   <h1 className="cover-heading">Please, sign in. </h1>
                 </div>
                 <div className="form-group">
-                  <p className="lead"><SpotifyButton title={"Let's Go"} /></p>
+                  <p className="lead">
+                    <SpotifyButton
+                      title={"Let's Go"}
+                      // history={this.props.history}
+                      redirectUrl={this.state.state.from.pathname}
+                    /></p>
                 </div>
               </div>
             </div>
