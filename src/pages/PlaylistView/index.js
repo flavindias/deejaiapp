@@ -24,15 +24,9 @@ export default class RoomView extends React.Component {
   async componentDidMount () {
     this.getData();
     this.getAvailableTracks();
+    this.userPlaylist();
     // this.sync();
 
-  }
-
-  sync = async () => {
-    let response = await api.get(`/playlists/${this.props.match.params.id}/sync`);
-    if (response) {
-      this.getAvailableTracks();
-    }
   }
   getData = async () => {
     let response = await api.get(`/playlists/${this.props.match.params.id}`);
@@ -68,12 +62,12 @@ export default class RoomView extends React.Component {
 
   }
   userPlaylist = async () => {
-    const body = {
-      room_id: this.state.room.id
-    }
-    const response = await api.post('/playlists', body);
+
+    const response = await api.get(`/playlists/${this.props.match.params.id}/tracks`);
     if (response) {
-      this.getData()
+      this.setState({
+        final: response.data
+      })
     }
 
   }
@@ -82,15 +76,17 @@ export default class RoomView extends React.Component {
   }
 
   changeRating = async (rating) => {
-    console.log(this.state.selectedTrack)
+
     const body = {
       rating,
       track_id: this.state.selectedTrack
     }
     const response = await api.post(`/playlists/${this.props.match.params.id}/vote`, body);
-    console.log(response)
+
     if (response) {
       this.getData()
+      this.userPlaylist()
+
     }
   }
   render () {
@@ -191,7 +187,7 @@ export default class RoomView extends React.Component {
                       </div>
                       <div className="col-6 text-center">
                         <ReactTable
-                          data={room.playlists}
+                          data={this.state.final}
                           columns={[
                             {
                               Header: "Playlists",
@@ -204,12 +200,8 @@ export default class RoomView extends React.Component {
                                 },
                                 {
                                   Header: "Creator",
-                                  id: "approoach",
-                                  accessor: d => d.approach,
-
-                                  Cell: row => (
-                                    <div>{row.value === "USER" ? "User" : "deejAI"}</div>
-                                  )
+                                  id: "name",
+                                  accessor: d => d.name
                                 },
 
                               ]
