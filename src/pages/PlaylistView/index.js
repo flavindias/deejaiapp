@@ -176,7 +176,7 @@ export default class RoomView extends React.Component {
                               Header: "ID",
                               id: "id",
                               accessor: d => d.id,
-                              Cell: row => (<button data-toggle="modal" onClick={() => { this.setState({ selectedTrack: row.value }) }} data-target="#modalExemplo" className={"btn btn-sm btn-success"}><i className={"fas fa-poll"}></i></button>)
+                              // Cell: row => (<button data-toggle="modal" onClick={() => { this.setState({ selectedTrack: row.value }) }} data-target="#modalExemplo" className={"btn btn-sm btn-success"}><i className={"fas fa-poll"}></i></button>)
                             },
                           ]}
                         />
