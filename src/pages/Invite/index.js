@@ -6,7 +6,6 @@ import SpotifyLogin from 'react-spotify-login';
 import ReactGA from 'react-ga';
 import "./style.css";
 
-const defaultBanner = "../../../public/img/boreal.jpeg";
 
 export default class RoomInvite extends React.Component {
 
@@ -68,7 +67,7 @@ export default class RoomInvite extends React.Component {
     const { room } = this.state;
     // const position = this.room.location ? this.room.location.coordinates : [ -8, -36 ];
     // const position = this.state.data.address ? (this.state.data.address.coordinates ? this.state.data.address.coordinates.coordinates : [this.info.lat, this.info.lng]) : [this.info.lat, this.info.lng];
-    const position = [ -8, -36 ];
+    // const position = [ -8, -36 ];
     return (
       <div>
         <Header />
@@ -90,18 +89,18 @@ export default class RoomInvite extends React.Component {
                         </div>
                         <div className="card hovercard">
                           <div className="cardheader" style={{
-                            backgroundImage: `url(${this.state.room.banner})`,
+                            backgroundImage: `url(${room.banner})`,
                             backgroundSize: 'cover',
                             height: '125px',
                           }}>
 
                           </div>
                           <div className="avatar">
-                            <img alt="Profile picture" src={this.state.room.owner ? this.state.room.owner.photo : ""} />
+                            <img alt="Owner avatar" src={this.state.room.owner ? this.state.room.owner.photo : ""} />
                           </div>
                           <div className="info">
                             <div className="title">
-                              <a target="_blank" >{this.state.room.owner ? this.state.room.owner.display_name : ""}</a>
+                              <span >{this.state.room.owner ? this.state.room.owner.display_name : ""}</span>
                             </div>
                             <div className="desc"><h1>Hello,</h1></div>
                             <div className="desc"><p>I invited you to my room to enjoy a new musical experience, just click on join</p></div>
@@ -109,8 +108,8 @@ export default class RoomInvite extends React.Component {
                         </div>
                         <div className="footer text-center">
                           <SpotifyLogin clientId={"8e50fa5257fe4537b86253accb36a7fc"}
-                            redirectUri={`https://deejai.me/callback`}
-                            // redirectUri={"http://localhost:8080/callback"}
+                            // redirectUri={`https://deejai.me/callback`}
+                            redirectUri={"http://localhost:8080/callback"}
                             onSuccess={this.onSuccess}
                             scope={[
                               "user-read-recently-played",

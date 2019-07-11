@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import "./style.css";
 const defaultBanner = "../../../public/img/boreal.jpeg";
+const defaultImg = `${process.env.PUBLIC_URL}/img/default-profile.png`;
 
 export default class RoomItem extends React.Component {
 
@@ -42,6 +43,7 @@ export default class RoomItem extends React.Component {
               title=""
               data-original-title={this.props.owner ? this.props.owner.display_name : ''}
               className="d-inline-block mr-1">
+
               <img
                 src={this.props.room.owner.photo ? this.props.room.owner.photo : this.defaultImg}
                 className="rounded-circle avatar-xs profile-member-photo"
@@ -56,8 +58,11 @@ export default class RoomItem extends React.Component {
                 title=""
                 data-original-title={member.display_name}
                 className="d-inline-block mr-1">
+                {
+                  console.log(member.photo)
+                }
                 <img
-                  src={member.photo ? member.photo : this.defaultImg}
+                  src={member.photo ? member.photo : defaultImg}
                   className="rounded-circle avatar-xs profile-member-photo" alt="member" />
               </a>)
 

@@ -3,11 +3,12 @@ import HeaderApp from '../../components/HeaderApp';
 import api from '../../services/api';
 import './style.css';
 import RoomItem from '../../components/RoomItem';
-
+import AuthService from '../../services/auth';
 
 export default class Dashboard extends React.Component {
   constructor(props) {
     super(props)
+    this.AuthService = new AuthService();
     this.state = {
       rooms: [],
       latitude: -8,
@@ -16,9 +17,13 @@ export default class Dashboard extends React.Component {
     }
   }
 
-  componentDidMount () {
-    this.getTopMusic()
-    this.getRooms()
+  async componentDidMount () {
+    await this.makeRemoteRequest();
+
+  }
+  makeRemoteRequest = async () => {
+    this.getTopMusic();
+    this.getRooms();
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
@@ -32,15 +37,26 @@ export default class Dashboard extends React.Component {
         this.setState({ loading: false });
       }
     );
+    // if (await this.AuthService.isLoggedIn()) {
 
+    // }
+    // else {
+    //   alert("nao pega")
+    //   this.props.history.push("/login");
 
+    // }
   }
   getTopMusic = async () => {
     try {
-      await api.get('/users/topMusic');
+      const response = await api.get('/users/topMusic');
+      console.log(response)
+      // if (response.status === 500) {
+      //   this.props.history.push("/logout");
+      // }
     }
     catch (e) {
       console.warn(e);
+
     }
   }
   getRooms = async () => {
@@ -51,13 +67,16 @@ export default class Dashboard extends React.Component {
           rooms: resp.data
         })
       }
+      else {
+        this.props.history.push("/logout");
+      }
 
     }
     catch (e) {
       console.warn(e);
-      // alert(JSON.stringify(e));
     }
   }
+
 
   createRoom = async () => {
     try {
@@ -91,22 +110,24 @@ export default class Dashboard extends React.Component {
         <HeaderApp />
         <div className={"container"}>
           <div className="row">
-            <div class="col-md-8">
-              <h1 className="float-left" style={{ color: '#fff' }}>Rooms</h1>
+            <div className="col-md-8">
+              <h1 className="float-left">Rooms</h1>
             </div>
-            <div class="col-md-4">
-              <div class="btn-group float-right mt-2" role="group">
-                <a
+            <div className="col-md-4">
+              <div className="btn-group float-right mt-2" role="group">
+                <button
                   onClick={this.createRoom}
                   style={{ color: 'white' }}
                   aria-hidden="true"
                   className={"btn btn-success float-right"}>
+
                   <i
-                    class="fa fa-plus"
+                    className="fa fa-plus"
                     aria-hidden="true">
                   </i>
                   Create Room
-                  </a>
+                  </button>
+
               </div>
             </div>
             <div className="col-12">
@@ -117,7 +138,7 @@ export default class Dashboard extends React.Component {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     )
   }
 }

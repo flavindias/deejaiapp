@@ -12,6 +12,7 @@ import Dashboard from '../pages/Dashboard';
 import Login from '../pages/Login'
 import Invite from '../pages/Invite';
 import RoomView from '../pages/RoomView';
+import PlaylistView from '../pages/PlaylistView';
 
 const Routes = () => (
   <BrowserRouter>
@@ -22,6 +23,7 @@ const Routes = () => (
       <Route exact path={"/contact"} component={Contact} />
       <PrivateRoute exact path={"/app"} component={Dashboard} />
       <PrivateRoute exact path={"/app/rooms/:id"} component={RoomView} />
+      <PrivateRoute exact path={"/app/playlists/:id"} component={PlaylistView} />
       <Route exact path={"/login"} component={Login} />
       <Route exact path={"/join/:code"} component={Invite} />
       <PrivateRoute exact path={"/logout"} component={() => {

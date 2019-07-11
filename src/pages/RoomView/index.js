@@ -1,15 +1,16 @@
 import React from 'react';
 import api from '../../services/api';
-import { Link } from 'react-router-dom';
+
 import Header from '../../components/HeaderApp';
-import L from 'leaflet';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import ReactTable from 'react-table';
+import "react-table/react-table.css";
 import "./style.css";
 
-const defaultBanner = "../../../public/img/boreal.jpeg";
 
 export default class RoomView extends React.Component {
+
   constructor(props) {
+
     super(props);
     this.state = {
       room: {
@@ -21,6 +22,10 @@ export default class RoomView extends React.Component {
     }
   }
   async componentDidMount () {
+    this.getData()
+  }
+
+  getData = async () => {
     let response = await api.get(`/rooms/${this.props.match.params.id}`);
     if (response) {
       this.setState({
@@ -28,85 +33,179 @@ export default class RoomView extends React.Component {
       });
       // alert(JSON.stringify(response));
     }
+    else {
+
+    }
+  }
+  async syncPlaylist (id) {
+    let response = await api.post(`/playlists/${id}/sync`);
+    if (response) {
+      alert("Sucessfully sincronized.")
+    }
+  }
+
+  deejAIPlaylist = async () => {
+    const { code } = this.state.room
+    const resp = await api.post(`/rooms/${code}/ia`)
+    if (resp) {
+      this.getData()
+    }
+    else {
+      console.warn("error")
+    }
+
+  }
+  userPlaylist = async () => {
+    const body = {
+      room_id: this.state.room.id
+    }
+    const response = await api.post('/playlists', body);
+    if (response) {
+      this.getData()
+    }
+
+  }
+  viewPlaylist = (id) => {
+    this.props.history.push(`/app/playlist/${id}`)
   }
 
   render () {
     const { room } = this.state;
+    const defaultImg = `${process.env.PUBLIC_URL}/img/default-profile.png`;
     // const position = this.room.location ? this.room.location.coordinates : [ -8, -36 ];
     // const position = this.state.data.address ? (this.state.data.address.coordinates ? this.state.data.address.coordinates.coordinates : [this.info.lat, this.info.lng]) : [this.info.lat, this.info.lng];
     // const position = [ -8, -36 ];
     return (
       <div>
         <Header />
-        <main role="main" className="cover">
-          <div className="container h-100 home">
-            <div className="row h-100 justify-content-center align-items-center text-center">
-              <div className="col-12">
+        <main role="main" className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <div className="tile">
+                <div className="wrapper">
+                  <div className="card hovercard">
+                    <div className="cardheader" style={{
+                      backgroundImage: `url(${room.banner})`,
+                      backgroundSize: 'cover',
+                      height: '125px',
+                    }}>
+
+                    </div>
+                    <div className="info">
+                      <div className="title">
+                        <p>#{room.id}</p>
+                      </div>
+                      <div className="desc"><p>Members</p></div>
+                      <div>
+                        {/* Owner */}
+                        <a
+                          href="/"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title=""
+                          data-original-title={room.owner ? room.owner.display_name : ''}
+                          className="d-inline-block mr-1">
+                          <img
+                            src={room.owner.photo ? room.owner.photo : defaultImg}
+                            className="rounded-circle avatar-xs profile-member-photo"
+                            alt="owner" />
+                        </a>
+                        {/* Members */}
+                        {room.members.map(member => (
+                          <a
+                            href="/"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title=""
+                            data-original-title={member.display_name}
+                            className="d-inline-block mr-1">
+                            <img
+                              src={member.photo ? member.photo : defaultImg}
+                              className="rounded-circle avatar-xs profile-member-photo" alt="member" />
+                          </a>)
 
 
-                <div className="row">
-                  <div className="col-lg-12">
-                    <div className="tile">
-                      <div className="wrapper">
-                        <div className="card hovercard">
-                          <div className="cardheader" style={{
-                            backgroundImage: `url(${room.banner})`,
-                            backgroundSize: 'cover',
-                            height: '125px',
-                          }}>
-
-                          </div>
-                          <div className="info">
-                            <div className="title">
-                              <p>#{room.id}</p>
-                            </div>
-                            <div className="desc"><p>{room.description}</p></div>
-                            <div className="desc"><p>Members</p></div>
-                            <div>
-                              {/* Owner */}
-                              <a
-                                href="/"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title=""
-                                data-original-title={room.owner ? room.owner.display_name : ''}
-                                className="d-inline-block mr-1">
-                                <img
-                                  src={room.owner.photo ? room.owner.photo : this.defaultImg}
-                                  className="rounded-circle avatar-xs profile-member-photo"
-                                  alt="owner" />
-                              </a>
-                              {/* Members */}
-                              {room.members.map(member => (
-                                <a
-                                  href="/"
-                                  data-toggle="tooltip"
-                                  data-placement="top"
-                                  title=""
-                                  data-original-title={member.display_name}
-                                  className="d-inline-block mr-1">
-                                  <img
-                                    src={member.photo ? member.photo : this.defaultImg}
-                                    className="rounded-circle avatar-xs profile-member-photo" alt="member" />
-                                </a>)
+                        )}
+                      </div>
 
 
-                              )}
-                            </div>
+                    </div>
+                  </div>
+                  <div className="footer text-left">
+                    <div className="row">
+                      <div className="col-6">
+                        <button className={'btn btn-success'} onClick={() => { this.deejAIPlaylist() }}>Create new deejAI playlist</button>
+                        <br />
+                        <button className={'btn'} onClick={() => { this.userPlaylist() }}>Create a new playlist </button>
+                        <br />
+                        <span>Description: </span>
+                        <p>{room.description}</p>
+                        <span>Share</span>
+                        <p></p>
+                        <span>Status:</span>
+                        <br />
+                        <span className={`btn btn-sm ${room.public ? "btn-success" : "btn-danger"}`}> {room.public ? "Public" : "Private"}</span>
 
+                      </div>
+                      <div className="col-6 text-center">
+                        <ReactTable
+                          data={room.playlists}
+                          columns={[
+                            {
+                              Header: "Playlists",
+                              columns: [
 
-                          </div>
-                        </div>
-                        <div className="footer text-center">
+                                {
+                                  Header: "ID",
+                                  id: "id",
+                                  accessor: d => d.id
+                                },
+                                {
+                                  Header: "Creator",
+                                  id: "approoach",
+                                  accessor: d => d.approach,
 
-                        </div>
+                                  Cell: row => (
+                                    <div>{row.value === "USER" ? "User" : "deejAI"}</div>
+                                  )
+                                },
+
+                              ]
+                            },
+                            {
+                              Header: "Playlist",
+                              columns: [
+                                {
+                                  Header: "View",
+                                  id: "id",
+                                  accessor: d => d.id,
+                                  Cell: row => (
+                                    <span className={"text-center"}>
+                                      <button
+                                        className={"btn btn-sm btn-warning"}
+                                        onClick={() => { this.viewPlaylist(row.value) }}>
+                                        <i className="far fa-eye"></i>
+                                      </button>
+                                    </span>
+
+                                  )
+                                }
+                              ]
+                            }
+                          ]}
+                          defaultPageSize={10}
+                          className="-striped -highlight"
+                        />
+
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
         </main>
       </div >
     )

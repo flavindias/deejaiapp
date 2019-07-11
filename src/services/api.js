@@ -2,8 +2,8 @@ import { create } from 'apisauce';
 
 
 const api = create({
-  baseURL: 'https://api.deejai.me/v1',
-  // baseURL: 'http://localhost:3001/v1',
+  // baseURL: 'https://api.deejai.me/v1',
+  baseURL: 'http://localhost:3001/v1',
 
 });
 

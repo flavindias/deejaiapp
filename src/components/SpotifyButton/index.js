@@ -5,8 +5,9 @@ import api from "../../services/api";
 export default class Header extends React.Component {
 
   onSuccess = response => {
-    console.log(response);
     window.sessionStorage.setItem("@DeejAI:token", response.access_token);
+    const expires = new Date().setMinutes(new Date().getMinutes() + response.expires_in / 60);
+    window.sessionStorage.setItem("@DeejAI:token_expires_in", expires);
     this.getTopMusic();
   };
 
@@ -32,8 +33,8 @@ export default class Header extends React.Component {
     return (
       <div>
         <SpotifyLogin clientId={"8e50fa5257fe4537b86253accb36a7fc"}
-          redirectUri={`https://deejai.me/callback`}
-          // redirectUri={"http://localhost:8080/callback"}
+          // redirectUri={`https://deejai.me/callback`}
+          redirectUri={"http://localhost:8080/callback"}
           onSuccess={this.onSuccess}
           onFailure={this.onFailure}
           scope={[
