@@ -65,12 +65,23 @@ export default class RoomView extends React.Component {
     }
 
   }
-  viewPlaylist = (id) => {
-    this.props.history.push(`/app/playlists/${id}`, {
+  viewPlaylist = (id, approach) => {
+    if (approach === 'USER') {
+      this.props.history.push(`/app/playlists/${id}`, {
 
-      room: this.state.room
+        room: this.state.room
 
-    })
+      })
+    }
+    else {
+      this.props.history.push(`/app/playlists/${id}/deejai`, {
+
+        room: this.state.room
+
+      })
+    }
+
+
   }
 
   render () {
@@ -197,7 +208,10 @@ export default class RoomView extends React.Component {
                                     <span className={"text-center"}>
                                       <button
                                         className={"btn btn-sm btn-warning"}
-                                        onClick={() => { this.viewPlaylist(row.value) }}>
+                                        onClick={() => {
+
+                                          this.viewPlaylist(row.value, row.original.approach)
+                                        }}>
                                         <i className="far fa-eye"></i>
                                       </button>
                                     </span>

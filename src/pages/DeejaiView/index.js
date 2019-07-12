@@ -5,7 +5,6 @@ import Header from '../../components/HeaderApp';
 import ReactTable from 'react-table';
 import "react-table/react-table.css";
 import "./style.css";
-import matchSorter from 'match-sorter';
 import StarRatings from 'react-star-ratings';
 
 export default class RoomView extends React.Component {
@@ -13,18 +12,21 @@ export default class RoomView extends React.Component {
   constructor(props) {
 
     super(props);
+    console.log(this.props.location.state.room)
     this.state = {
       room: this.props.location.state.room,
       availableToVote: [],
+      playlist: [],
       final: [],
-      selectedTrack: ''
+      selectedTrack: '',
+
 
     }
   }
   async componentDidMount () {
     this.getData();
-    this.getAvailableTracks();
-    this.userPlaylist();
+    // this.getAvailableTracks();
+    // this.userPlaylist();
     // this.sync();
 
   }
@@ -44,12 +46,9 @@ export default class RoomView extends React.Component {
   getAvailableTracks = async (id) => {
     let response = await api.get(`/playlists/${this.props.match.params.id}/availableTracks`);
     if (response) {
-      if (response.data) {
-        this.setState({
-          availableToVote: response.data
-        })
-      }
-
+      this.setState({
+        availableToVote: response.data
+      })
     }
   }
 
@@ -93,7 +92,7 @@ export default class RoomView extends React.Component {
     }
   }
   render () {
-    const { room, availableToVote } = this.state;
+    const { room, playlist } = this.state;
     const defaultImg = `${process.env.PUBLIC_URL}/img/default-profile.png`;
     return (
       <div>
@@ -153,9 +152,9 @@ export default class RoomView extends React.Component {
                   </div>
                   <div className="footer text-left">
                     <div className="row">
-                      <div className="col-6 text-center">
+                      <div className="col-12 text-center">
                         <ReactTable
-                          data={availableToVote}
+                          data={playlist}
                           columns={[
                             {
                               Header: "Song",
@@ -163,33 +162,24 @@ export default class RoomView extends React.Component {
                                 {
                                   Header: "Name",
                                   id: "name",
-                                  accessor: d => d.name,
-                                  filterMethod: (filter, rows) => {
-                                    return matchSorter(rows, filter.value, { keys: [ "name" ] })
-                                  },
-                                  filterAll: true,
-
+                                  accessor: d => d.name
                                 },
                                 {
                                   Header: "Artist",
                                   id: "artists",
-                                  accessor: d => d.artists[ 0 ].name,
-                                  // filterMethod: (filter, rows) => {
-                                  //   return matchSorter(rows, filter.value, { keys: [ "artists" ] })
-                                  // },
-                                  // filterAll: true,
+                                  accessor: d => d.artists[ 0 ].name
 
                                 }
                               ]
 
 
                             },
-                            {
-                              Header: "ID",
-                              id: "id",
-                              accessor: d => d.id,
-                              Cell: row => (<button data-toggle="modal" onClick={() => { this.setState({ selectedTrack: row.value }) }} data-target="#modalExemplo" className={"btn btn-sm btn-success"}><i className={"fas fa-poll"}></i></button>)
-                            },
+                            // {
+                            //   Header: "ID",
+                            //   id: "id",
+                            //   accessor: d => d.id,
+                            //   Cell: row => (<button data-toggle="modal" onClick={() => { this.setState({ selectedTrack: row.value }) }} data-target="#modalExemplo" className={"btn btn-sm btn-success"}><i className={"fas fa-poll"}></i></button>)
+                            // },
                           ]}
                         />
 
@@ -197,53 +187,7 @@ export default class RoomView extends React.Component {
 
 
                       </div>
-                      <div className="col-6 text-center">
-                        <ReactTable
-                          data={this.state.final}
-                          columns={[
-                            {
-                              Header: "Playlists",
-                              columns: [
 
-                                {
-                                  Header: "ID",
-                                  id: "id",
-                                  accessor: d => d.id
-                                },
-                                {
-                                  Header: "Creator",
-                                  id: "name",
-                                  accessor: d => d.name
-                                },
-
-                              ]
-                            },
-                            {
-                              Header: "Playlist",
-                              columns: [
-                                {
-                                  Header: "View",
-                                  id: "id",
-                                  accessor: d => d.id,
-                                  Cell: row => (
-                                    <span className={"text-center"}>
-                                      {/* <button
-                                        className={"btn btn-sm btn-warning"}
-                                        onClick={() => { this.viewPlaylist(row.value) }}>
-                                        <i className="far fa-eye"></i>
-                                      </button> */}
-                                    </span>
-
-                                  )
-                                }
-                              ]
-                            }
-                          ]}
-                          defaultPageSize={5}
-                          className="-striped -highlight"
-                        />
-
-                      </div>
                     </div>
 
                   </div>

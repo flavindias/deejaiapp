@@ -13,6 +13,7 @@ import Login from '../pages/Login'
 import Invite from '../pages/Invite';
 import RoomView from '../pages/RoomView';
 import PlaylistView from '../pages/PlaylistView';
+import DeejaiView from '../pages/DeejaiView';
 
 const Routes = () => (
   <BrowserRouter>
@@ -24,6 +25,7 @@ const Routes = () => (
       <PrivateRoute exact path={"/app"} component={Dashboard} />
       <PrivateRoute exact path={"/app/rooms/:id"} component={RoomView} />
       <PrivateRoute exact path={"/app/playlists/:id"} component={PlaylistView} />
+      <PrivateRoute exact path={"/app/playlists/:id/deejai"} component={DeejaiView} />
       <Route exact path={"/login"} component={Login} />
       <Route exact path={"/join/:code"} component={Invite} />
       <PrivateRoute exact path={"/logout"} component={() => {
