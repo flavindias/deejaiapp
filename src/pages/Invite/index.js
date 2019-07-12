@@ -107,8 +107,8 @@ export default class RoomInvite extends React.Component {
                         </div>
                         <div className="footer text-center">
                           <SpotifyLogin clientId={"8e50fa5257fe4537b86253accb36a7fc"}
-                            // redirectUri={`https://deejai.me/callback`}
-                            redirectUri={"http://localhost:8080/callback"}
+                            redirectUri={`https://deejai.me/callback`}
+                            // redirectUri={"http://localhost:8080/callback"}
                             onSuccess={this.onSuccess}
                             scope={[
                               "user-read-recently-played",
