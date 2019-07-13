@@ -6,6 +6,7 @@ export default class SpotifyButton extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.location;
+
   }
   componentDidMount () {
     console.log(this.props.redirectUrl)
@@ -24,10 +25,11 @@ export default class SpotifyButton extends React.Component {
     try {
       // alert(window.sessionStorage.getItem("@DeejAI:token"));
       const response = await api.get('/users/topMusic')
+      const redirect = this.props.redirectUrl;
       if (response) {
         //    go to rooms
-        console.log(response);
-        this.props.history.push(`${this.redirect !== '' ? this.redirect : "/app"}`);
+        console.log(this.props);
+        this.props.history.push(`${redirect ? redirect : "/app"}`);
       }
     }
     catch (e) {
@@ -36,6 +38,7 @@ export default class SpotifyButton extends React.Component {
   }
 
   render () {
+
     return (
       <div>
         <SpotifyLogin clientId={"8e50fa5257fe4537b86253accb36a7fc"}

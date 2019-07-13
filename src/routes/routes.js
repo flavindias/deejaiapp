@@ -2,9 +2,8 @@ import React from 'react';
 
 import PrivateRoute from "./privateRoutes";
 
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-import Header from '../pages/Home';
 import AboutUs from '../pages/AboutUs';
 import Team from '../pages/Team';
 import Contact from '../pages/Contact';
@@ -14,11 +13,12 @@ import Invite from '../pages/Invite';
 import RoomView from '../pages/RoomView';
 import PlaylistView from '../pages/PlaylistView';
 import DeejaiView from '../pages/DeejaiView';
+import Home from '../pages/Home';
 
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path={"/"} component={Header} />
+      <Route exact path={"/"} component={Home} />
       <Route exact path={"/about-us"} component={AboutUs} />
       <Route exact path={"/team"} component={Team} />
       <Route exact path={"/contact"} component={Contact} />
@@ -30,6 +30,7 @@ const Routes = () => (
       <Route exact path={"/join/:code"} component={Invite} />
       <PrivateRoute exact path={"/logout"} component={() => {
         window.sessionStorage.clear("@DeejAI:token");
+        return <Redirect to={{ pathname: "/" }} />;
 
       }} />
     </Switch>

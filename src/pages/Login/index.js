@@ -1,19 +1,23 @@
 import React from 'react';
 import Header from '../../components/Header';
 import SpotifyButton from '../../components/SpotifyButton';
+import { Redirect } from 'react-router-dom';
 
 
 
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.location;
+    this.state = { redirectToReferrer: false };
   }
 
   loadData = (url) => {
 
   }
   render () {
+    let { from } = this.props.location.state || { from: { pathname: "/" } };
+    const { redirectToReferrer } = this.state;
+    if (redirectToReferrer) return <Redirect to={from} />;
     return (
       <div>
         <Header />
@@ -28,7 +32,7 @@ export default class Login extends React.Component {
                   <p className="lead">
                     <SpotifyButton
                       title={"Let's Go"}
-                      // history={this.props.history}
+                      history={this.props.history}
                       redirectUrl={this.state.state.from.pathname}
                     /></p>
                 </div>

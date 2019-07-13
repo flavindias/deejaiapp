@@ -7,6 +7,7 @@ import "react-table/react-table.css";
 import "./style.css";
 import matchSorter from 'match-sorter';
 import StarRatings from 'react-star-ratings';
+import $ from 'jquery';
 
 export default class RoomView extends React.Component {
 
@@ -89,6 +90,7 @@ export default class RoomView extends React.Component {
     if (response) {
       this.getData()
       this.userPlaylist()
+      $(".dismiss-modal").click();
 
     }
   }
@@ -272,7 +274,7 @@ export default class RoomView extends React.Component {
                 />
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" className="btn btn-secondary dismiss-modal" data-dismiss="modal">Fechar</button>
                 {/* <button type="button" className="btn btn-primary">Salvar mudanças</button> */}
               </div>
             </div>
