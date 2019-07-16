@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "https://deejai.me/static/css/main.de721ba3.chunk.css",
-    "main.js": "https://deejai.me/static/js/main.6deb9bbd.chunk.js",
-    "main.js.map": "https://deejai.me/static/js/main.6deb9bbd.chunk.js.map",
+    "main.js": "https://deejai.me/static/js/main.828ea3e3.chunk.js",
+    "main.js.map": "https://deejai.me/static/js/main.828ea3e3.chunk.js.map",
     "runtime~main.js": "https://deejai.me/static/js/runtime~main.aab15ade.js",
     "runtime~main.js.map": "https://deejai.me/static/js/runtime~main.aab15ade.js.map",
     "static/css/2.d4b275d9.chunk.css": "https://deejai.me/static/css/2.d4b275d9.chunk.css",
-    "static/js/2.891fcf01.chunk.js": "https://deejai.me/static/js/2.891fcf01.chunk.js",
-    "static/js/2.891fcf01.chunk.js.map": "https://deejai.me/static/js/2.891fcf01.chunk.js.map",
+    "static/js/2.a5f34ddd.chunk.js": "https://deejai.me/static/js/2.a5f34ddd.chunk.js",
+    "static/js/2.a5f34ddd.chunk.js.map": "https://deejai.me/static/js/2.a5f34ddd.chunk.js.map",
     "index.html": "https://deejai.me/index.html",
-    "precache-manifest.cf4f3b339f150146707386ddc6c5a779.js": "https://deejai.me/precache-manifest.cf4f3b339f150146707386ddc6c5a779.js",
+    "precache-manifest.ab6ba02adb93ebbb3c429490182aea7d.js": "https://deejai.me/precache-manifest.ab6ba02adb93ebbb3c429490182aea7d.js",
     "service-worker.js": "https://deejai.me/service-worker.js",
     "static/css/2.d4b275d9.chunk.css.map": "https://deejai.me/static/css/2.d4b275d9.chunk.css.map",
     "static/css/main.de721ba3.chunk.css.map": "https://deejai.me/static/css/main.de721ba3.chunk.css.map"

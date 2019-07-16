@@ -1,9 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../components/Header'
-
+import Header from '../../components/Header';
+import ReactGA from 'react-ga';
 
 export default class About extends React.Component {
+  constructor(props) {
+    super(props);
+    ReactGA.initialize('UA-142975359-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
 
   render () {
     const urlCin = 'https://cin.ufpe.br';

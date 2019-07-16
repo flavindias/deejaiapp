@@ -2,13 +2,15 @@ import React from 'react';
 import Header from '../../components/Header';
 import SpotifyButton from '../../components/SpotifyButton';
 import { Redirect } from 'react-router-dom';
-
+import ReactGA from 'react-ga';
 
 
 export default class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = { redirectToReferrer: false };
+    ReactGA.initialize('UA-142975359-1');
+    ReactGA.pageview('/login');
   }
 
   loadData = (url) => {
@@ -33,7 +35,7 @@ export default class Login extends React.Component {
                     <SpotifyButton
                       title={"Let's Go"}
                       history={this.props.history}
-                      redirectUrl={this.state.state.from.pathname}
+                      redirectUrl={this.state.state ? (this.state.state.from ? this.state.state.from.pathname : "/app") : "/app"}
                     /></p>
                 </div>
               </div>

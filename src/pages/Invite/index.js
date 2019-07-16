@@ -67,6 +67,7 @@ export default class RoomInvite extends React.Component {
     // const position = this.room.location ? this.room.location.coordinates : [ -8, -36 ];
     // const position = this.state.data.address ? (this.state.data.address.coordinates ? this.state.data.address.coordinates.coordinates : [this.info.lat, this.info.lng]) : [this.info.lat, this.info.lng];
     // const position = [ -8, -36 ];
+    const defaultImg = `${process.env.PUBLIC_URL}/img/default-profile.png`;
     return (
       <div>
         <Header />
@@ -95,7 +96,7 @@ export default class RoomInvite extends React.Component {
 
                           </div>
                           <div className="avatar">
-                            <img alt="Owner avatar" src={this.state.room.owner ? this.state.room.owner.photo : ""} />
+                            <img alt="Owner avatar" src={this.state.room.owner ? (this.state.room.owner.photo !== '' ? this.state.room.owner.photo : defaultImg) : defaultImg} />
                           </div>
                           <div className="info">
                             <div className="title">

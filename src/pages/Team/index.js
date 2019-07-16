@@ -2,8 +2,15 @@ import React from 'react';
 import Header from '../../components/Header'
 import CardMember from '../../components/CardMember/'
 import './style.css';
+import ReactGA from 'react-ga';
 
 export default class Team extends React.Component {
+  constructor(props) {
+    super(props);
+    ReactGA.initialize('UA-142975359-1');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }
+
   render () {
     return (
       <div>

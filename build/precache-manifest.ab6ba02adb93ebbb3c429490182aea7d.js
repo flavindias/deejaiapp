@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b3a60e43b7a83098824c840caec8a37f",
+    "revision": "c5fd6d7bc4feda3f318740c13e963b17",
     "url": "https://deejai.me/index.html"
   },
   {
-    "revision": "0caec70bb4071dfacadb",
+    "revision": "ce4520cc1592cb655b76",
     "url": "https://deejai.me/static/css/2.d4b275d9.chunk.css"
   },
   {
-    "revision": "239c51386b3ba7759789",
+    "revision": "28a889105c8e2d3bd6cd",
     "url": "https://deejai.me/static/css/main.de721ba3.chunk.css"
   },
   {
-    "revision": "0caec70bb4071dfacadb",
-    "url": "https://deejai.me/static/js/2.891fcf01.chunk.js"
+    "revision": "ce4520cc1592cb655b76",
+    "url": "https://deejai.me/static/js/2.a5f34ddd.chunk.js"
   },
   {
-    "revision": "239c51386b3ba7759789",
-    "url": "https://deejai.me/static/js/main.6deb9bbd.chunk.js"
+    "revision": "28a889105c8e2d3bd6cd",
+    "url": "https://deejai.me/static/js/main.828ea3e3.chunk.js"
   },
   {
     "revision": "aa9c59840a83ddcadc46",

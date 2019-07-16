@@ -45,7 +45,7 @@ export default class RoomItem extends React.Component {
               className="d-inline-block mr-1">
 
               <img
-                src={this.props.room.owner.photo ? this.props.room.owner.photo : this.defaultImg}
+                src={this.props.room.owner.photo ? this.props.room.owner.photo : defaultImg}
                 className="rounded-circle avatar-xs profile-member-photo"
                 alt="owner" />
             </a>
@@ -58,9 +58,6 @@ export default class RoomItem extends React.Component {
                 title=""
                 data-original-title={member.display_name}
                 className="d-inline-block mr-1">
-                {
-                  console.log(member.photo)
-                }
                 <img
                   src={member.photo ? member.photo : defaultImg}
                   className="rounded-circle avatar-xs profile-member-photo" alt="member" />
